@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono:300,300i,400,400i,500,500i&display=swap');
+
+body {
+    background: url('../img/bg.jpg') repeat 292px;
+    -webkit-background-size: 292px 209px;
+    background-size: 292px 209px;
+    background-attachment: fixed;
+
+    margin: 0;
+    padding: 0;
+
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+
+    font-family: 'Roboto Mono', monospace;
+    font-size: 25px;
+    font-style: italic;
+    cursor: url('../img/cur/cursor.cur'), auto;
+}
+
+input[type="text"] {
+    padding: 5px;
+    width: 200px;
+    height: 40px;
+
+    border: 2px solid #000;
+
+    box-sizing: border-box;
+}
+
+input[type="button"] {
+    padding: 5px;
+    width: 200px;
+    height: 40px;
+
+    font-family: 'Roboto Mono', monospace;
+    font-weight: 500;
+    font-size: 15px;
+    font-style: italic;
+    border: 2px solid #000;
+    background: #000;
+    color: #fff;
+
+    box-sizing: border-box;
+}
+
+.start {
+    background: rgba(0, 0, 0, .5);
+
+    width: 100vw;
+    height: 100vh;
+
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 2;
+}
+
+.start .start-popup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    border-radius: 4%;
+    width: 400px;
+    height: 330px;
+}
+
+.start h1 {
+    margin: -20px 0 10px 0;
+}
+
+.start form {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.start label {
+    margin: 10px 0 30px 0;
+}
+
+.results {
+    background: rgba(0, 0, 0, .5);
+
+    width: 100vw;
+    height: 100vh;
+
+    position: absolute;
+    display: none;
+    justify-content: center;
+    align-items: center;
+
+    z-index: 2;
+}
+
+.results .result-popup {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #fff;
+    border-radius: 4%;
+    width: 400px;
+    height: 330px;
+}
+
+.results h2 {
+    margin: -10px 0 10px 0;
+}
+
+table {
+    border-spacing: 0 10px;
+    font-weight: bold;
+    font-size: 15px;
+    margin: 20px 0 30px 0;
+}
+
+td {
+    border-bottom: 3px solid #000;
+}
+
+td:first-child {
+    text-align: left;
+    padding-right: 130px;
+}
+
+td:last-child {
+    text-align: right;
+    padding-left: 10px;
+}
+
+.pause {
+    position: relative;
+    /* display: none; */
+}
+
+.play {
+    /* filter: blur(10px); */
+    width: 100vw;
+    height: 100vh;
+}
+
+.play .block {
+    display: flex;
+    align-items: flex-end;
+}
+
+.play .statistics {
+    position: relative;
+    width: 100vw;
+    min-height: 50px;
+    max-height: 120px;
+    height: 8.5vh;
+    background: #c7c7c7;
+    box-shadow: 0 0 30px 15px rgba(29, 30, 32, 0.5);
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+
+    padding: 0 2% 0 2%;
+    z-index: 1;
+}
+
+.play .statistics .catch-fruit img {
+    min-width: 40px;
+    min-height: 40px;
+    max-width: 100px;
+    max-height: 100px;
+    width: 5%;
+    height: 5%;
+}
+
+.health-name-points-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.play .statistics .health {
+    width: 30px;
+    height: auto;
+}
+
+.play .statistics .name,
+.play .statistics .points {
+    position: sticky;
+    margin: 0 2.5vw 0 2.5vw;
+}
+
+.play .statistics .name {
+    background: #1e1e20;
+    border-radius: 10px;
+    color: #fff;
+
+    padding: 5px 30px 5px 30px;
+    box-sizing: border-box;
+}
+
+.play .statistics .points {
+    display: inline-block;
+    width: 20px;
+}
+
+.play .statistics .time {
+    display: inline;
+}
+
+.play .statistics .pause {
+    background: #1e1e20;
+    border: none;
+    border-radius: 10px;
+    color: #fff;
+
+    font-size: 25px;
+    font-style: italic;
+
+    padding: 5px 30px 5px 30px;
+}
+
+.play .game-window {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.game-window .fruit-game > img {
+    width: 100px;
+    height: 100px;
+}
+
+.game-window .fruits-game {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-start;
+}
+
+.play .splashes {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+.play .splash {
+    width: 130px;
+    height: auto;
+}
+
+.play .boom {
+    position: absolute;
+    /* visibility:  hidden; */
+    z-index: 1;
+}
+
+.play .gun {
+    position: relative;
+    top: -5.5%;
+
+    width: 70px;
+    height: auto;
+
+    align-self: flex-end;
+    transform-origin: 50% 82.5%;
+}

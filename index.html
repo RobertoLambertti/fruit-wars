@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="css/style.css">
+    <title>Fruitface</title>
+</head>
+<body>
+    <div class="start">
+        <div class="start-popup">
+            <h1>FruitFace</h1>
+            <form onsubmit="return false;">
+                <label for="start-user-name">
+                    <input type="text" name="user-name" id='start-user-name' placeholder="Ваше имя" value="tester" required>
+                </label>
+                <input type="button" class="play-button" value="Играть">
+            </form>
+        </div>
+    </div>
+    <div class="results">
+        <div class="result-popup">
+            <h2>Игра окончена!</h2>
+            <table>
+                <tr>
+                    <td class="result-username">username</td>
+                    <td class="result-points">20</td>
+                </tr>
+                <tr>
+                    <td class="result-username">username</td>
+                    <td class="result-points">2</td>
+                </tr>
+                <tr>
+                    <td class="result-username">username</td>
+                    <td class="result-points">2</td>
+                </tr>
+            </table>
+            <input type="button" class="result-button" value="Играть снова">
+        </div>
+    </div>
+    <div class="pause">
+
+    </div>
+    <div class="play">
+        <div class='block'>
+            <div class="statistics">
+                <div class="catch-fruit">
+                    <img src="img/banana.svg">
+                </div>
+                <div class="health-name-points-block">
+                    <div class='health-block'>
+                        <img src="img/health.svg" class="health">
+                        <img src="img/health.svg" class="health">
+                        <img src="img/health.svg" class="health">
+                    </div>
+                    <span class="name">tester</span>
+                    <span class="points">25</span>
+                </div>
+                <div class="time-pause-block">
+                    <span class="time">mm:ss</span>
+                    <button type="button" name="pause" class="pause">Пауза</button>
+                </div>
+            </div>
+        </div>
+        <div class="game-window">
+            <div class='fruits-game'>
+                <div class="fruit-game"><img src="img/banana.svg"></div>
+                <div class="fruit-game"><img src="img/banana.svg"></div>
+                <div class="fruit-game"><img src="img/banana.svg"></div>
+                <div class="fruit-game"><img src="img/banana.svg"></div>
+                <div class="fruit-game"><img src="img/banana.svg"></div>
+                <div class="fruit-game"><img src="img/banana.svg"></div>
+                <div class="fruit-game"><img src="img/banana.svg"></div>
+                <div class="fruit-game"><img src="img/banana.svg"></div>
+                <div class="fruit-game"><img src="img/banana.svg"></div>
+                <div class="fruit-game"><img src="img/banana.svg"></div>
+            </div>
+            <div class="effects splashes booms">
+                <canvas class="boom" width="165" height="165">Ваш браузер не поддерживает Canvas!</canvas>
+            </div>
+            <img src="img/gun.png" class="gun">
+        </div>
+    </div>
+    <script src="js/jquery-3.4.1.min.js" charset="utf-8"></script>
+    <script src="js/game-function.js" charset="utf-8"></script>
+</body>
+</html>
