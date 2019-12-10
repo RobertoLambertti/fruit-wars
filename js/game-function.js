@@ -5,9 +5,14 @@ var inputButtonPlay = document.querySelector('.play-button');
 var startWindow = document.querySelector('.start');
 var resultWindow = {
     el: document.querySelector('.results'),
-    username: document.querySelector('.result-username'),
-    points: document.querySelector('.result-points'),
+    username: document.querySelector('tr:last-child .result-username'),
+    points: document.querySelector('tr:last-child  .result-points'),
     replay: document.querySelector('.result-button'),
+}
+var pauseWindow = {
+    active: false,
+    el: document.querySelector('.pause'),
+    window: document.querySelector('.window-pause'),
 }
 var elSplashes = document.querySelector(".splashes");
 var requestId;
@@ -135,6 +140,8 @@ var boom = {
 var gun = {
     el: document.querySelector('.gun'),
     rotate: 0,
+    coursorX: 0,
+    coursorY: 0,
 };
 var fruits = ['banana', 'apple', 'diet', 'orange', 'papaya', 'pear', 'pineapple'];
 var arrLine = ['fruitLine1', 'fruitLine2', 'fruitLine3', 'fruitLine4', 'fruitLine5', 'fruitLine6', 'fruitLine7', 'fruitLine8', 'fruitLine9', 'fruitLine10'];
@@ -262,9 +269,12 @@ function getBoom() {
 
 // Движение пушки
 function moveGun(a) {
-    // console.log('Выполнено');
-    // var gunPosition = ;
+    console.log('Выполнено');
     gun.rotate += (((innerWidth / 2) + a.pageX) + (innerHeight + a.pageY)) / 5;
+    coursorX = innerWidth / 2 - a.pageX;
+    coursorY = innerHeight - a.pageY;
+    console.log(a.pageX + ', ' + a.pageY);
+    console.log(coursorX + ', ' + coursorY);
     if (gun.rotate > 0) {
         gun.el.style.transform = 'rotate(' + gun.rotate + 'deg)';
         // console.log(gun.rotate);
@@ -272,7 +282,6 @@ function moveGun(a) {
         gun.el.style.transform = 'rotate(' + gun.rotate + 'deg)';
         // console.log(gun.rotate);
     }
-
 }
 
 function stopPlay() {
@@ -280,8 +289,8 @@ function stopPlay() {
     clearInterval(setTimer);
 }
 
-var y = 1;
 // Обработка клика по всем фруктам
+var y = 1;
 function getClick() {
     console.log('Клик!');
     if (lines[arrLine[$(this).index()]].fruit === player.catchFruit) {
@@ -312,7 +321,7 @@ function getClick() {
         getMinusHealth(); // Вычитание жизней
         if (!player.health) {
             lines[arrLine[$(this).index()]].el.style.visibility = 'hidden'; // Скрытие взорванного элемента
-            resultWindow.el.style.display = "flex";
+            resultWindow.el.style.display = "flex"; // Открытие окна результата
             resultWindow.username.innerHTML = player.name;
             resultWindow.points.innerHTML = player.points;
             stopPlay(); // Остановка игры
@@ -323,6 +332,18 @@ function getClick() {
         }
     }
     getScore(); // Отображение очков
+}
+
+function getPause() {
+    if (pauseWindow.active == false) {
+        stopPlay();
+        pauseWindow.window.style.display = 'block';
+        pauseWindow.active = true;
+    } else {
+        requestId = window.requestAnimationFrame(moveFruits);
+        pauseWindow.window.style.display = 'none';
+        pauseWindow.active = false;
+    }
 }
 
 // Перезапуск игры
@@ -366,8 +387,9 @@ function getPlay() {
         }
 
         resultWindow.replay.addEventListener('click', getReplay);
+        pauseWindow.el.addEventListener('click', getPause);
+        // document.addEventListener('mousemove', moveGun); // Вызов движения пушки
 
-        // document.addEventListener('mousemove', moveGun);
         boom.image.src = 'img/sprites/boom.png';
         ctx = boom.canvas.getContext("2d");
         setTimer = setInterval(timer, 1000);

@@ -135,9 +135,13 @@ td:last-child {
     padding-left: 10px;
 }
 
-.pause {
-    position: relative;
-    /* display: none; */
+.window-pause {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0, 0, 0, .5);
+    display: none;
+    z-index: 1;
 }
 
 .play {

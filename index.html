@@ -3,12 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="css/style.css">
-    <title>Fruitface</title>
+    <link rel="shortcut icon" href="img/ico/apple.ico" type="image/x-icon">
+    <title>FruitWars</title>
+    <script type="text/javascript" >
+       (function(m,e,t,r,i,k,a){m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+       m[i].l=1*new Date();k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)})
+       (window, document, "script", "https://mc.yandex.ru/metrika/tag.js", "ym");
+
+       ym(56615194, "init", {
+            clickmap:true,
+            trackLinks:true,
+            accurateTrackBounce:true,
+            webvisor:true
+       });
+    </script>
+    <noscript><div><img src="https://mc.yandex.ru/watch/56615194" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
 </head>
 <body>
     <div class="start">
         <div class="start-popup">
-            <h1>FruitFace</h1>
+            <h1>FruitWars</h1>
             <form onsubmit="return false;">
                 <label for="start-user-name">
                     <input type="text" name="user-name" id='start-user-name' placeholder="Ваше имя" value="tester" required>
@@ -23,11 +37,11 @@
             <table>
                 <tr>
                     <td class="result-username">username</td>
-                    <td class="result-points">20</td>
+                    <td class="result-points">99</td>
                 </tr>
                 <tr>
                     <td class="result-username">username</td>
-                    <td class="result-points">2</td>
+                    <td class="result-points">98</td>
                 </tr>
                 <tr>
                     <td class="result-username">username</td>
@@ -37,7 +51,7 @@
             <input type="button" class="result-button" value="Играть снова">
         </div>
     </div>
-    <div class="pause">
+    <div class="window-pause">
 
     </div>
     <div class="play">
@@ -77,7 +91,7 @@
             <div class="effects splashes booms">
                 <canvas class="boom" width="165" height="165">Ваш браузер не поддерживает Canvas!</canvas>
             </div>
-            <img src="img/gun.png" class="gun">
+            <!-- <img src="img/gun.png" class="gun"> -->
         </div>
     </div>
     <script src="js/jquery-3.4.1.min.js" charset="utf-8"></script>
