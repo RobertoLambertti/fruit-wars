@@ -214,6 +214,10 @@ function timer() {
         }
     }
     player.elTime.innerHTML = player.time.mm + ':' + player.time.ss;
+    if (Number(player.time.mm) <= 0 && player.time.ss <= 0) {
+        stopPlay();
+        resultWindow.el.style.display = "flex"; // Открытие окна результата
+    }
 }
 
 // Вычитание жизней
@@ -410,6 +414,14 @@ function getPlay() {
     }
 }
 
+// Очистка поля
+function removeSplashes() {
+    var removeSplash = document.querySelectorAll('.splash'); // Запись коллекции элементов
+    for (var i = 0; i < removeSplash.length; i++) { // i элемент коллекции...
+        removeSplash[i].remove(); // ...удален
+    }
+}
+
 function moveFruits() {
     var speedFruits = 35; // Скорость перемещения элементов (порпорционально)
 
@@ -430,7 +442,6 @@ function moveFruits() {
             lines[arrLine[i]].y = -100; // Элемент перемещается на стартовую позицию
         }
     }
-
     requestId = window.requestAnimationFrame(moveFruits);
 }
 

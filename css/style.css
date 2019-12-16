@@ -17,6 +17,9 @@ body {
     font-size: 25px;
     font-style: italic;
     cursor: url('../img/cur/cursor.cur'), auto;
+
+    /* pointer-events: none; */
+    user-select: none;
 }
 
 input[type="text"] {
@@ -160,7 +163,7 @@ td:last-child {
     width: 100vw;
     min-height: 50px;
     max-height: 120px;
-    height: 8.5vh;
+    height: 7vh;
     background: #c7c7c7;
     box-shadow: 0 0 30px 15px rgba(29, 30, 32, 0.5);
 
