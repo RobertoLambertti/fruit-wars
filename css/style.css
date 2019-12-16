@@ -18,8 +18,11 @@ body {
     font-style: italic;
     cursor: url('../img/cur/cursor.cur'), auto;
 
-    /* pointer-events: none; */
     user-select: none;
+}
+
+img {
+    pointer-events: none;
 }
 
 input[type="text"] {
