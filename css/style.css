@@ -2,7 +2,6 @@
 
 body {
     background: url('../img/bg.jpg') repeat 292px;
-    -webkit-background-size: 292px 209px;
     background-size: 292px 209px;
     background-attachment: fixed;
 
@@ -151,7 +150,6 @@ td:last-child {
 }
 
 .play {
-    /* filter: blur(10px); */
     width: 100vw;
     height: 100vh;
 }
@@ -271,7 +269,6 @@ td:last-child {
 
 .play .boom {
     position: absolute;
-    /* visibility:  hidden; */
     z-index: 1;
 }
 
