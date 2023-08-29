@@ -1,28 +1,28 @@
-let inputNamePlayer = document.querySelector('#start-user-name');
-let inputButtonPlay = document.querySelector('.play-button');
-let startWindow = document.querySelector('.start');
+var inputNamePlayer = document.querySelector('#start-user-name');
+var inputButtonPlay = document.querySelector('.play-button');
+var startWindow = document.querySelector('.start');
 
-let resultWindow = {
+var resultWindow = {
     el: document.querySelector('.results'),
     username: document.querySelector('tr:last-child .result-username'),
     points: document.querySelector('tr:last-child  .result-points'),
     replay: document.querySelector('.result-button'),
 }
 
-let pauseWindow = {
+var pauseWindow = {
     active: false,
     el: document.querySelector('.pause'),
     window: document.querySelector('.window-pause'),
 }
 
-let elSplashes = document.querySelector(".splashes");
-let requestId;
-let clickFruits;
-let fruit;
-let setBoom;
-let ctx;
+var elSplashes = document.querySelector(".splashes");
+var requestId;
+var clickFruits;
+var fruit;
+var setBoom;
+var ctx;
 
-let player = {
+var player = {
     name: 'tester',
     elName: document.querySelector('span.name'),
     points: 0,
@@ -38,7 +38,7 @@ let player = {
     elHealth: document.querySelector('.health:nth-child(3)'),
 };
 
-let lines = {
+var lines = {
     'fruitLine1': {
         el: document.querySelector('.fruit-game:nth-child(1)'),
         elImg: document.querySelector('.fruit-game:nth-child(1) > img'),
@@ -131,7 +131,7 @@ let lines = {
     },
 };
 
-let boom = {
+var boom = {
     canvas: document.querySelector(".boom"),
     image: new Image(165, 165),
     width: 165,
@@ -140,15 +140,15 @@ let boom = {
     currentFrame: 0,
 };
 
-let gun = {
+var gun = {
     el: document.querySelector('.gun'),
     rotate: 0,
     coursorX: 0,
     coursorY: 0,
 };
 
-let fruits = ['banana', 'apple', 'diet', 'orange', 'papaya', 'pear', 'pineapple'];
-let arrLine = ['fruitLine1', 'fruitLine2', 'fruitLine3', 'fruitLine4', 'fruitLine5', 'fruitLine6', 'fruitLine7', 'fruitLine8', 'fruitLine9', 'fruitLine10'];
+var fruits = ['banana', 'apple', 'diet', 'orange', 'papaya', 'pear', 'pineapple'];
+var arrLine = ['fruitLine1', 'fruitLine2', 'fruitLine3', 'fruitLine4', 'fruitLine5', 'fruitLine6', 'fruitLine7', 'fruitLine8', 'fruitLine9', 'fruitLine10'];
 
 // Генерация рандомного числа
 function getRandom(min, max) {
@@ -157,8 +157,8 @@ function getRandom(min, max) {
 
 // Рандомная генерация фруктов в начале игры
 function getRandomFruits() {
-    for (let j = 0; j < arrLine.length; j++) {
-        let randomNum = Math.ceil(getRandom(0, 6));
+    for (var j = 0; j < arrLine.length; j++) {
+        var randomNum = Math.ceil(getRandom(0, 6));
         lines[arrLine[j]].fruit = fruits[randomNum];
         lines[arrLine[j]].el.classList.add(lines[arrLine[j]].fruit);
         lines[arrLine[j]].elImg.src = 'img/' + lines[arrLine[j]].fruit + ".svg";
@@ -167,7 +167,7 @@ function getRandomFruits() {
 
 // Рандомная генерация отдельного фрукта
 function getRandomFruit(i) {
-    let randomNum = Math.ceil(getRandom(0, 6));
+    var randomNum = Math.ceil(getRandom(0, 6));
 
     lines[arrLine[i]].el.classList.remove(lines[arrLine[i]].fruit);
     lines[arrLine[i]].el.classList.add(fruits[randomNum]);
@@ -178,21 +178,21 @@ function getRandomFruit(i) {
 
 // Рандомная генерация скорости фруктов в начале игры
 function getSpeedFruits() {
-    for (let j = 0; j < arrLine.length; j++) {
-        let randomNum = getRandom(10, 25);
+    for (var j = 0; j < arrLine.length; j++) {
+        var randomNum = getRandom(10, 25);
         lines[arrLine[j]].speed = randomNum;
     }
 }
 
 // Рандомная генерация скорости отдельного фрукта
 function getSpeedFruit(i) {
-        let randomNum = getRandom(7, 25);
+        var randomNum = getRandom(7, 25);
         lines[arrLine[i]].speed = randomNum;
 }
 
 // Генерация выбранного фрукта
 function getCatchFruit() {
-    let randomNum = Math.ceil(getRandom(0, 6));
+    var randomNum = Math.ceil(getRandom(0, 6));
     player.catchFruit = fruits[randomNum];
     player.elCatchFruit.src = 'img/' + player.catchFruit + '.svg';
     clickFruits = document.querySelectorAll('.' + player.catchFruit);
@@ -237,7 +237,7 @@ function getMinusHealth() {
 
 // Добавление жизней
 function getPlusHealth() {
-    for(let t = 1; t <= 3; t++) {
+    for(var t = 1; t <= 3; t++) {
         player.elHealth = document.querySelector('.health:nth-child(' + t + ')');
         player.elHealth.style.visibility = 'visible';
         player.health = t;
@@ -246,7 +246,7 @@ function getPlusHealth() {
 
 // Добавление брызг
 function getSplashes(fruitSplash) {
-    let createSplash = document.createElement('img');
+    var createSplash = document.createElement('img');
     createSplash.src = 'img/splashes/' + lines[arrLine[fruitSplash.index()]].fruit + '/' + Math.ceil(getRandom(1, 9)) + '.png';
     createSplash.classList.add("splash");
 
@@ -298,7 +298,7 @@ function stopPlay() {
 }
 
 // Обработка клика по всем фруктам
-let y = 1;
+var y = 1;
 function getClick() {
     console.log('Клик!');
     if (lines[arrLine[$(this).index()]].fruit === player.catchFruit) {
@@ -357,7 +357,7 @@ function getPause() {
 
 // Перезапуск игры
 function getReplay() {
-    for (let j = 0; j < arrLine.length; j++) {
+    for (var j = 0; j < arrLine.length; j++) {
         lines[arrLine[j]].y = 0; // Изменение позиции
         lines[arrLine[j]].el.style.visibility = 'visible'; // Видимость элемента
         lines[arrLine[j]].el.style.transform = 'translateY(' + lines[arrLine[j]].y + 'px)'; // Перемещение элемента на стартовую позицию
@@ -388,10 +388,10 @@ function getReplay() {
 }
 
 // Запуск игры по нажатию на кнопку
-let setTimer;
+var setTimer;
 function getPlay() {
     if (inputNamePlayer.value !== '') {
-        for (let k = 0; k < arrLine.length; k++) {
+        for (var k = 0; k < arrLine.length; k++) {
             lines[arrLine[k]].el.addEventListener('click', getClick);
         }
 
@@ -412,8 +412,8 @@ function getPlay() {
             player.elName.style.boxShadow = 'inset 0px -3px 0px 0px #f00';
         }
 
-        // let i; // index элемента
-        // let timestampSwap = timestamp; // Запись "предыдущего времени" для вычисления разницы
+        // var i; // index элемента
+        // var timestampSwap = timestamp; // Запись "предыдущего времени" для вычисления разницы
 
         requestId = window.requestAnimationFrame(moveFruits);
     }
@@ -421,14 +421,14 @@ function getPlay() {
 
 // Очистка поля
 function removeSplashes() {
-    let removeSplash = document.querySelectorAll('.splash'); // Запись коллекции элементов
-    for (let i = 0; i < removeSplash.length; i++) { // i элемент коллекции...
+    var removeSplash = document.querySelectorAll('.splash'); // Запись коллекции элементов
+    for (var i = 0; i < removeSplash.length; i++) { // i элемент коллекции...
         removeSplash[i].remove(); // ...удален
     }
 }
 
 function moveFruits() {
-    let speedFruits = 35; // Скорость перемещения элементов (порпорционально)
+    var speedFruits = 35; // Скорость перемещения элементов (порпорционально)
 
     // Выбор элемента
     for (i = 0; i < arrLine.length; i++) {
